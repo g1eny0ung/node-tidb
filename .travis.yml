@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "node"
+
+services:
+  - docker
+
+before_install:
+  - git clone -b test --single-branch https://github.com/g1eny0ung/tidb-docker-compose.git
+  - cd tidb-docker-compose && docker-compose up -d
+  - cd ..
+
+install:
+  - yarn
+
+script:
+  - yarn build && yarn test
+
+cache: yarn
