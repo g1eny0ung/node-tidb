@@ -8,7 +8,6 @@ services:
 before_install:
   - git clone -b test --single-branch https://github.com/g1eny0ung/tidb-docker-compose.git
   - cd tidb-docker-compose && docker-compose up -d
-  - cd ..
 
 install:
   - yarn
