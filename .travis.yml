@@ -6,7 +6,7 @@ services:
   - docker
 
 before_install:
-  - git clone -b test --single-branch https://github.com/g1eny0ung/tidb-docker-compose.git
+  - git clone https://github.com/pingcap/tidb-docker-compose.git --depth 1
   - cd tidb-docker-compose && docker-compose up -d
 
 install:
