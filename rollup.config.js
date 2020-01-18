@@ -5,7 +5,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import pkg from './package.json'
 
 export default {
-  input: 'src/tidb.ts',
+  input: 'src/index.ts',
   external: ['mysql'],
   output: [
     // CommonJS
