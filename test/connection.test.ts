@@ -1,8 +1,8 @@
-const tidb = require('..')
-const axios = require('axios')
+import tidb from '..'
+import axios from 'axios'
 
 describe('connection', () => {
-  let connection
+  let connection: tidb.Connection
 
   beforeAll(() => {
     connection = tidb.createConnection({
