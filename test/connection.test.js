@@ -1,7 +1,7 @@
 const tidb = require('..')
 const axios = require('axios')
 
-describe('TiDB connection', () => {
+describe('connection', () => {
   let connection
 
   beforeAll(() => {

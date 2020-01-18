@@ -1,9 +1,12 @@
-import typescript from 'rollup-plugin-typescript'
+import typescript from '@rollup/plugin-typescript'
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
 
 import pkg from './package.json'
 
 export default {
-  input: `src/tidb.ts`,
+  input: 'src/tidb.ts',
+  external: ['mysql'],
   output: [
     // CommonJS
     {
@@ -18,5 +21,5 @@ export default {
       indent: false
     }
   ],
-  plugins: [typescript()]
+  plugins: [resolve(), commonjs(), typescript()]
 }

@@ -25,18 +25,21 @@
   "private": false,
   "scripts": {
     "build": "rollup -c",
-    "build:declaration": "tsc --emitDeclarationOnly",
-    "build:all": "yarn build && yarn build:declaration",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:all": "yarn build && yarn build:types",
     "test": "jest",
-    "prepublishOnly": "yarn build && yarn build:declaration && yarn test"
+    "prepublishOnly": "yarn build:all && yarn test"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-typescript": "^2.1.0",
     "@types/node": "^12.7.2",
     "axios": "^0.19.0",
     "jest": "^24.9.0",
     "rollup": "^1.20.2",
-    "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^1.10.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.5.3"
   },
   "dependencies": {
