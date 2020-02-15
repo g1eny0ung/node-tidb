@@ -1,6 +1,6 @@
 {
   "name": "tidb",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "A TiDB driver for Node.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -28,7 +28,7 @@
     "build:all": "yarn build && yarn build:types",
     "test": "jest",
     "clean": "rimraf dist",
-    "prepublishOnly": "yarn build:all && yarn test"
+    "prepublishOnly": "yarn build:all"
   },
   "dependencies": {
     "@types/mysql": "^2.15.7",
