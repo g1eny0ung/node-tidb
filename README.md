@@ -4,4 +4,4 @@
 
 A TiDB driver for Node.js
 
-Currently WIP
+> Currently WIP
