@@ -5,7 +5,7 @@ node_js:
 before_install:
   - curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
   - source ~/.bash_profile
-  - tiup playground v4.0.0 --tiflash 0
+  - tiup playground v4.0.0 --tiflash 0 &
 
 install:
   - yarn
