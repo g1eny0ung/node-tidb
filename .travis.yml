@@ -2,12 +2,9 @@ language: node_js
 node_js:
   - "node"
 
-services:
-  - docker
-
 before_install:
-  - git clone https://github.com/pingcap/tidb-docker-compose.git --depth 1
-  - cd tidb-docker-compose && docker-compose up -d
+  - curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
+  - tiup playground v4.0.0 --tiflash 0
 
 install:
   - yarn

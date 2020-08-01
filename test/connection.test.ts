@@ -1,5 +1,4 @@
 import tidb from '..'
-import axios from 'axios'
 
 describe('connection', () => {
   let connection: tidb.Connection
@@ -10,6 +9,7 @@ describe('connection', () => {
       port: 4000,
       user: 'root'
     })
+    connection.connect()
   })
 
   afterAll(() => {
@@ -17,10 +17,12 @@ describe('connection', () => {
   })
 
   it('successful connection without password', done => {
-    connection.connect(async () => {
-      const status = await axios.get('http://localhost:10080/status')
+    connection.query('SELECT tidb_version();', (err, results) => {
+      if (err) {
+        throw err
+      }
 
-      expect(status.data.connections).toBe(1)
+      expect(results).not.toBeNull()
       done()
     })
   })
