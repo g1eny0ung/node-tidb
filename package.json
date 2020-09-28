@@ -23,12 +23,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rollup -c",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:all": "yarn build && yarn build:types",
+    "rollup": "rollup -c",
+    "types": "tsc --emitDeclarationOnly",
+    "build": "concurrently -c green --names 'rollup,types' 'yarn rollup' 'yarn types'",
     "test": "jest",
     "clean": "rimraf dist",
-    "prepublishOnly": "yarn build:all"
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@types/mysql": "^2.15.7",
@@ -41,6 +41,7 @@
     "@rollup/plugin-typescript": "^2.1.0",
     "@types/jest": "^24.9.0",
     "babel-jest": "^25.1.0",
+    "concurrently": "^5.3.0",
     "jest": "^24.9.0",
     "rimraf": "^3.0.0",
     "rollup": "^1.20.2",
