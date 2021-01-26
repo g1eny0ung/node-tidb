@@ -10,14 +10,15 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      indent: false
+      indent: false,
+      exports: 'default',
     },
     // ES
     {
       file: pkg.module,
       format: 'es',
-      indent: false
-    }
+      indent: false,
+    },
   ],
-  plugins: [typescript()]
+  plugins: [typescript()],
 }

@@ -7,7 +7,7 @@ describe('connection', () => {
     connection = tidb.createConnection({
       host: 'localhost',
       port: 4000,
-      user: 'root'
+      user: 'root',
     })
     connection.connect()
   })
@@ -16,7 +16,7 @@ describe('connection', () => {
     connection.end()
   })
 
-  it('successful connection without password', done => {
+  it('connection succeeded', (done) => {
     connection.query('SELECT tidb_version();', (err, results) => {
       if (err) {
         throw err
