@@ -1,6 +1,5 @@
-import typescript from '@rollup/plugin-typescript'
-
 import pkg from './package.json'
+import typescript from '@rollup/plugin-typescript'
 
 export default {
   input: 'src/index.ts',
@@ -10,14 +9,12 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
-      indent: false,
       exports: 'default',
     },
     // ES
     {
       file: pkg.module,
       format: 'es',
-      indent: false,
     },
   ],
   plugins: [typescript()],
