@@ -22,7 +22,9 @@ jobs:
     steps:
     - name: Install TiUP
       run: curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
-    - run: /home/runner/.tiup/bin/tiup playground --without-monitor
+    - run: |
+        /home/runner/.tiup/bin/tiup playground --without-monitor &
+        sleep 60
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
