@@ -19,9 +19,8 @@
   "keywords": [
     "tidb"
   ],
-  "author": "Yue Yang <g1enyy0ung@gmail.com> (https://g1eny0ung.site)",
+  "author": "Yue Yang <g1enyy0ung@gmail.com> (https://g1en.site)",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "rollup": "rollup -c",
     "types": "tsc --emitDeclarationOnly",
@@ -31,7 +30,7 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "@types/mysql": "^2.15.18",
+    "@types/mysql": "^2.15.21",
     "mysql": "^2.17.1"
   },
   "devDependencies": {
@@ -41,7 +40,7 @@
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/jest": "^26.0.23",
     "babel-jest": "^27.0.2",
-    "concurrently": "^6.2.0",
+    "concurrently": "^7.0.0",
     "jest": "^27.0.2",
     "rimraf": "^3.0.0",
     "rollup": "^2.50.4",

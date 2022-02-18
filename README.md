@@ -5,3 +5,7 @@
 A TiDB driver for Node.js
 
 > Currently WIP
+
+## License
+
+MIT.
