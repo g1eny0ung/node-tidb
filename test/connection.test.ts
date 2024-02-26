@@ -1,14 +1,16 @@
 import tidb from '..'
+import { describe, beforeAll, afterAll, it, expect } from 'vitest'
 
-describe('connection', () => {
+describe('test connection', () => {
   let connection: tidb.Connection
 
   beforeAll(() => {
     connection = tidb.createConnection({
-      host: 'localhost',
+      host: '127.0.0.1',
       port: 4000,
       user: 'root',
     })
+
     connection.connect()
   })
 
@@ -16,14 +18,15 @@ describe('connection', () => {
     connection.end()
   })
 
-  it('connection succeeded', (done) => {
-    connection.query('SELECT tidb_version();', (err, results) => {
-      if (err) {
-        throw err
-      }
+  it('should connect to TiDB successfully', () =>
+    new Promise((done) => {
+      connection.query('select tidb_version();', (err, results) => {
+        if (err) {
+          throw err
+        }
 
-      expect(results).not.toBeNull()
-      done()
-    })
-  })
+        expect(results).not.toBeNull()
+        done(results)
+      })
+    }))
 })

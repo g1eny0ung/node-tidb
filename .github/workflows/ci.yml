@@ -5,40 +5,43 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     paths:
       - 'src/**'
       - 'test/**'
-      - yarn.lock
+      - pnpm-lock.yaml
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths:
       - 'src/**'
       - 'test/**'
-      - yarn.lock
+      - pnpm-lock.yaml
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - name: Install TiUP
-      run: curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
-    - run: |
-        /home/runner/.tiup/bin/tiup playground --without-monitor &
-        sleep 60
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - run: yarn
-    - run: yarn build
-    - run: yarn test
+      - name: Install TiUP
+        run: curl --proto '=https' --tlsv1.2 -sSf https://tiup-mirrors.pingcap.com/install.sh | sh
+      - name: Start TiDB
+        run: |
+          /home/runner/.tiup/bin/tiup playground --without-monitor &
+          sleep 60
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - run: pnpm i
+      - run: pnpm prepublishOnly
+      - run: pnpm test
